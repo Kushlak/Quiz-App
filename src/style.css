@@ -32,6 +32,12 @@ body {
   padding: 16px;
 }
 
+.quiz-list {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
 .progress {
   margin: 0 0 10px 0;
   color: #555;
