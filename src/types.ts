@@ -3,6 +3,7 @@ export type Answer = {
   text: string;
 };
 
+// Shared quiz question shape consumed by top-level state and card components.
 export type QuizQuestion = {
   question: string;
   answers: Answer[];

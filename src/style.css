@@ -2,6 +2,7 @@
   box-sizing: border-box;
 }
 
+/* Shared emphasis style for score and feedback text blocks. */
 #score,
 #feedback {
   margin: 10px 0;
@@ -14,6 +15,7 @@ body {
   background: #f2f2f2;
 }
 
+/* Centers and constrains the main quiz panel on the page. */
 .quiz-container {
   max-width: 560px;
   margin: 40px auto;
@@ -32,6 +34,7 @@ body {
   padding: 16px;
 }
 
+/* Vertical stack for all question cards in the active quiz view. */
 .quiz-list {
   display: grid;
   gap: 12px;
@@ -47,6 +50,7 @@ body {
   margin-top: 0;
 }
 
+/* Grid layout keeps answer buttons evenly spaced and readable. */
 .answers {
   display: grid;
   gap: 10px;
@@ -70,6 +74,7 @@ body {
   margin: 8px 0;
 }
 
+/* Primary action button style used for finish/retry interactions. */
 .next-btn {
   padding: 10px;
   border: 1px solid #444;

@@ -4,6 +4,7 @@ type Props = {
   text?: string;
 };
 
+// Reusable primary button used for quiz progression actions.
 function NextQuestionButton({ onClick, disabled, text }: Props) {
   return (
     <button className="next-btn" onClick={onClick} disabled={disabled}>

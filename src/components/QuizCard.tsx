@@ -13,6 +13,7 @@ type Props = {
   feedback?: string;
 };
 
+// Supports two modes: full quiz question card or generic content wrapper.
 function QuizCard({
   children,
   current,

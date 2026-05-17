@@ -5,6 +5,7 @@ type Props = {
   children: ReactNode;
 };
 
+// Shared outer layout for title and quiz content area.
 function QuizContainer({ title, children }: Props) {
   return (
     <div className="quiz-container">

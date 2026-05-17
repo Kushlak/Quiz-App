@@ -5,6 +5,7 @@ import QuizContainer from "./components/QuizContainer";
 import FinishQuiz from "./components/FinishQuiz";
 import { Answer, QuizQuestion } from "./types";
 
+// Static quiz content used to render each question and validate answers.
 const quizData: QuizQuestion[] = [
   {
     question: "How many semitones are in one octave?",
@@ -39,13 +40,16 @@ const quizData: QuizQuestion[] = [
 ];
 
 function App() {
+  // Local state tracks score, chosen answers, per-question feedback, and finish status.
   const [score, setScore] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<(Answer | null)[]>(
     quizData.map(() => null),
   );
   const [feedbacks, setFeedbacks] = useState<string[]>(quizData.map(() => ""));
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [quizFinished, setQuizFinished] = useState(false);
 
+  // Accept a single answer per question and compute immediate feedback.
   function handleAnswerClick(questionIndex: number, answer: Answer) {
     if (selectedAnswers[questionIndex]) {
       return;
@@ -57,6 +61,7 @@ function App() {
 
     const question = quizData[questionIndex];
 
+    // Correct choices increment score; incorrect choices show the right answer text.
     if (answer.id === question.correctAnswer.id) {
       const nextFeedbacks = [...feedbacks];
       nextFeedbacks[questionIndex] = "Correct!";
@@ -69,22 +74,32 @@ function App() {
     }
   }
 
-  function handleFinishQuiz() {
-    if (!selectedAnswers.every((answer) => answer !== null)) {
+  // Moves through one question at a time and finishes from the final card.
+  function handleNextQuestion() {
+    if (!selectedAnswers[currentQuestionIndex]) {
       return;
     }
 
-    setQuizFinished(true);
+    if (currentQuestionIndex === quizData.length - 1) {
+      setQuizFinished(true);
+      return;
+    }
+
+    setCurrentQuestionIndex((prev) => prev + 1);
   }
 
+  // Restores initial state so the user can replay the quiz.
   function handleRetryQuiz() {
     setScore(0);
     setSelectedAnswers(quizData.map(() => null));
     setFeedbacks(quizData.map(() => ""));
+    setCurrentQuestionIndex(0);
     setQuizFinished(false);
   }
 
-  const allAnswered = selectedAnswers.every((answer) => answer !== null);
+  const currentQuestion = quizData[currentQuestionIndex];
+  const currentAnswer = selectedAnswers[currentQuestionIndex];
+  const isLastQuestion = currentQuestionIndex === quizData.length - 1;
 
   return (
     <>
@@ -96,24 +111,21 @@ function App() {
         />
       ) : (
         <QuizContainer title="Music Theory Quiz">
-          <div className="quiz-list">
-            {quizData.map((question, index) => (
-              <QuizCard
-                key={index}
-                current={index + 1}
-                total={quizData.length}
-                question={question.question}
-                answers={question.answers}
-                onAnswerClick={(answer) => handleAnswerClick(index, answer)}
-                feedback={feedbacks[index]}
-              />
-            ))}
-          </div>
+          <QuizCard
+            current={currentQuestionIndex + 1}
+            total={quizData.length}
+            question={currentQuestion.question}
+            answers={currentQuestion.answers}
+            onAnswerClick={(answer) =>
+              handleAnswerClick(currentQuestionIndex, answer)
+            }
+            feedback={feedbacks[currentQuestionIndex]}
+          />
 
           <NextQuestionButton
-            onClick={handleFinishQuiz}
-            disabled={!allAnswered}
-            text="Finish Quiz"
+            onClick={handleNextQuestion}
+            disabled={!currentAnswer}
+            text={isLastQuestion ? "Finish Quiz" : "Next Question"}
           />
         </QuizContainer>
       )}

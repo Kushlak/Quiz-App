@@ -5,6 +5,7 @@ type Props = {
   onAnswerClick: (answer: Answer) => void;
 };
 
+// Renders all possible answers and emits the selected answer to parent state.
 function AnswerButtons({ answers, onAnswerClick }: Props) {
   return (
     <div className="answers">
