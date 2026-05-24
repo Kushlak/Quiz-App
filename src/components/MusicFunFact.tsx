@@ -8,7 +8,7 @@ function getRandomFact(facts: string[]) {
 }
 
 // Displays a music fun fact without changing quiz answers, score, or progress.
-function NoteOfTheDay() {
+function MusicFunFact() {
   const [currentFact, setCurrentFact] = useState("");
 
   function handleNewFactClick() {
@@ -30,4 +30,4 @@ function NoteOfTheDay() {
   );
 }
 
-export default NoteOfTheDay;
+export default MusicFunFact;

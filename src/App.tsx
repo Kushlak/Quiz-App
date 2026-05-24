@@ -4,7 +4,7 @@ import QuizCard from "./components/QuizCard";
 import QuizContainer from "./components/QuizContainer";
 import FinishQuiz from "./components/FinishQuiz";
 import MiniPianoHelper from "./components/MiniPianoHelper";
-import NoteOfTheDay from "./components/NoteOfTheDay";
+import MusicFunFact from "./components/MusicFunFact";
 import { Answer, QuizQuestion } from "./types";
 
 // Static quiz content used to render each question and validate answers.
@@ -184,7 +184,7 @@ function App() {
       ) : (
         <QuizContainer title="Music Theory Quiz">
           <div className="quiz-main">
-            <NoteOfTheDay />
+            <MusicFunFact />
 
             <QuizCard
               current={currentQuestionIndex + 1}
