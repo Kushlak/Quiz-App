@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NextQuestionButton from "./components/NextQuestionButton";
 import QuizCard from "./components/QuizCard";
 import QuizContainer from "./components/QuizContainer";
 import FinishQuiz from "./components/FinishQuiz";
 import MiniPianoHelper from "./components/MiniPianoHelper";
 import MusicFunFact from "./components/MusicFunFact";
+import ThemeSwitcher, { ThemeName } from "./components/ThemeSwitcher";
 import { Answer, QuizQuestion } from "./types";
 
 // Static quiz content used to render each question and validate answers.
@@ -111,8 +112,19 @@ const quizData: QuizQuestion[] = [
   },
 ];
 
+function getSavedTheme(): ThemeName {
+  const savedTheme = localStorage.getItem("quiz-theme");
+
+  if (savedTheme === "dark" || savedTheme === "color") {
+    return savedTheme;
+  }
+
+  return "light";
+}
+
 function App() {
   // Local state tracks score, chosen answers, per-question feedback, and finish status.
+  const [theme, setTheme] = useState<ThemeName>(getSavedTheme);
   const [score, setScore] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState<(Answer | null)[]>(
     quizData.map(() => null),
@@ -120,6 +132,10 @@ function App() {
   const [feedbacks, setFeedbacks] = useState<string[]>(quizData.map(() => ""));
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const [quizFinished, setQuizFinished] = useState(false);
+
+  useEffect(() => {
+    localStorage.setItem("quiz-theme", theme);
+  }, [theme]);
 
   // Accept a single answer per question and compute immediate feedback.
   function handleAnswerClick(questionIndex: number, answer: Answer) {
@@ -174,7 +190,9 @@ function App() {
   const isLastQuestion = currentQuestionIndex === quizData.length - 1;
 
   return (
-    <>
+    <div className={`app-shell theme-${theme}`}>
+      <ThemeSwitcher theme={theme} onThemeChange={setTheme} />
+
       {quizFinished ? (
         <FinishQuiz
           score={score}
@@ -207,7 +225,7 @@ function App() {
           </div>
         </QuizContainer>
       )}
-    </>
+    </div>
   );
 }
 

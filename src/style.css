@@ -15,6 +15,98 @@ body {
   background: #f2f2f2;
 }
 
+.app-shell {
+  --page-bg: #f2f2f2;
+  --panel-bg: #ffffff;
+  --text-color: #222222;
+  --muted-text: #555555;
+  --border-color: #dddddd;
+  --soft-border: #cccccc;
+  --button-bg: #222222;
+  --button-text: #ffffff;
+  --secondary-bg: #fafafa;
+  --secondary-hover: #f0f0f0;
+  --accent: #2b7cff;
+  --fact-accent: #5b8c3a;
+  --fact-soft: #edf6e8;
+  --fact-text: #33422c;
+  --sharp-bg: #222222;
+  --sharp-text: #ffffff;
+  min-height: 100vh;
+  padding-top: 1px;
+  color: var(--text-color);
+  background: var(--page-bg);
+}
+
+.theme-dark {
+  --page-bg: #111827;
+  --panel-bg: #1f2937;
+  --text-color: #f9fafb;
+  --muted-text: #cbd5e1;
+  --border-color: #374151;
+  --soft-border: #4b5563;
+  --button-bg: #f9fafb;
+  --button-text: #111827;
+  --secondary-bg: #273449;
+  --secondary-hover: #334155;
+  --accent: #60a5fa;
+  --fact-accent: #8bcf6d;
+  --fact-soft: #263a2a;
+  --fact-text: #d9f7ce;
+  --sharp-bg: #020617;
+  --sharp-text: #f9fafb;
+}
+
+.theme-color {
+  --page-bg: #fff0f7;
+  --panel-bg: #ffffff;
+  --text-color: #4a1230;
+  --muted-text: #8a3a63;
+  --border-color: #f5a3ca;
+  --soft-border: #f0b6d2;
+  --button-bg: #d81b7d;
+  --button-text: #ffffff;
+  --secondary-bg: #fff6fb;
+  --secondary-hover: #ffe0ef;
+  --accent: #ff4fa3;
+  --fact-accent: #ec4899;
+  --fact-soft: #ffe4f1;
+  --fact-text: #7a1747;
+  --sharp-bg: #6d123f;
+  --sharp-text: #ffffff;
+}
+
+.theme-switcher {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  width: fit-content;
+  margin: 20px auto 0;
+  padding: 4px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  background: var(--panel-bg);
+}
+
+.theme-option {
+  min-width: 72px;
+  padding: 8px 10px;
+  border: 0;
+  background: transparent;
+  color: var(--muted-text);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.theme-option:hover {
+  background: var(--secondary-hover);
+}
+
+.active-theme {
+  background: var(--button-bg);
+  color: var(--button-text);
+}
+
 /* Centers and constrains the main quiz panel on the page. */
 .quiz-container {
   max-width: 560px;
@@ -28,8 +120,8 @@ body {
 }
 
 .quiz-card {
-  background: white;
-  border: 1px solid #ddd;
+  background: var(--panel-bg);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 16px;
 }
@@ -42,10 +134,10 @@ body {
   margin-bottom: 12px;
   min-width: 0;
   padding: 12px 14px;
-  border: 1px solid #ddd;
-  border-left: 4px solid #5b8c3a;
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--fact-accent);
   border-radius: 8px;
-  background: white;
+  background: var(--panel-bg);
 }
 
 .note-of-day h2 {
@@ -55,21 +147,21 @@ body {
 
 .note-of-day p {
   margin: 0;
-  color: #33422c;
+  color: var(--fact-text);
 }
 
 .fact-button {
   margin-top: 10px;
   padding: 8px 10px;
-  border: 1px solid #5b8c3a;
-  background: white;
-  color: #33422c;
+  border: 1px solid var(--fact-accent);
+  background: var(--panel-bg);
+  color: var(--fact-text);
   border-radius: 6px;
   cursor: pointer;
 }
 
 .fact-button:hover {
-  background: #edf6e8;
+  background: var(--fact-soft);
 }
 
 .fact-button:disabled {
@@ -86,7 +178,7 @@ body {
 
 .progress {
   margin: 0 0 10px 0;
-  color: #555;
+  color: var(--muted-text);
 }
 
 .question {
@@ -102,14 +194,15 @@ body {
 
 .answer-btn {
   padding: 10px;
-  border: 1px solid #ccc;
-  background: #fafafa;
+  border: 1px solid var(--soft-border);
+  background: var(--secondary-bg);
+  color: var(--text-color);
   cursor: pointer;
   border-radius: 6px;
 }
 
 .answer-btn:hover {
-  background: #f0f0f0;
+  background: var(--secondary-hover);
 }
 
 .feedback {
@@ -124,22 +217,23 @@ body {
 .helper-toggle {
   width: 100%;
   padding: 10px;
-  border: 1px solid #777;
-  background: white;
+  border: 1px solid var(--soft-border);
+  background: var(--panel-bg);
+  color: var(--text-color);
   border-radius: 6px;
   cursor: pointer;
 }
 
 .helper-toggle:hover {
-  background: #f7f7f7;
+  background: var(--secondary-hover);
 }
 
 .piano-panel {
   margin-top: 10px;
   padding: 12px;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border-color);
   border-radius: 8px;
-  background: white;
+  background: var(--panel-bg);
 }
 
 .piano-keys {
@@ -151,29 +245,30 @@ body {
 .piano-key {
   min-height: 56px;
   padding: 8px 4px;
-  border: 1px solid #bbb;
-  background: #fff;
+  border: 1px solid var(--soft-border);
+  background: var(--panel-bg);
+  color: var(--text-color);
   border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
 }
 
 .sharp-key {
-  background: #222;
-  color: white;
-  border-color: #222;
+  background: var(--sharp-bg);
+  color: var(--sharp-text);
+  border-color: var(--sharp-bg);
 }
 
 .selected-key {
-  outline: 3px solid #2b7cff;
+  outline: 3px solid var(--accent);
   outline-offset: 2px;
 }
 
 .note-info {
   margin-top: 12px;
   padding: 10px;
-  border-left: 4px solid #2b7cff;
-  background: #f5f9ff;
+  border-left: 4px solid var(--accent);
+  background: var(--secondary-bg);
 }
 
 .note-info p {
@@ -184,23 +279,23 @@ body {
   width: 100%;
   margin-top: 12px;
   padding: 10px;
-  border: 1px solid #444;
-  background: #222;
-  color: white;
+  border: 1px solid var(--button-bg);
+  background: var(--button-bg);
+  color: var(--button-text);
   border-radius: 6px;
   cursor: pointer;
 }
 
 .helper-hide:hover {
-  background: #333;
+  opacity: 0.9;
 }
 
 /* Primary action button style used for finish/retry interactions. */
 .next-btn {
   padding: 10px;
-  border: 1px solid #444;
-  background: #222;
-  color: white;
+  border: 1px solid var(--button-bg);
+  background: var(--button-bg);
+  color: var(--button-text);
   border-radius: 6px;
   cursor: pointer;
 }
