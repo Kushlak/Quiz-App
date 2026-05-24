@@ -34,6 +34,49 @@ body {
   padding: 16px;
 }
 
+.quiz-main {
+  margin: 0 auto;
+}
+
+.note-of-day {
+  margin-bottom: 12px;
+  min-width: 0;
+  padding: 12px 14px;
+  border: 1px solid #ddd;
+  border-left: 4px solid #5b8c3a;
+  border-radius: 8px;
+  background: white;
+}
+
+.note-of-day h2 {
+  margin: 0 0 6px 0;
+  font-size: 16px;
+}
+
+.note-of-day p {
+  margin: 0;
+  color: #33422c;
+}
+
+.fact-button {
+  margin-top: 10px;
+  padding: 8px 10px;
+  border: 1px solid #5b8c3a;
+  background: white;
+  color: #33422c;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.fact-button:hover {
+  background: #edf6e8;
+}
+
+.fact-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 /* Vertical stack for all question cards in the active quiz view. */
 .quiz-list {
   display: grid;

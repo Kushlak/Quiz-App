@@ -4,6 +4,7 @@ import QuizCard from "./components/QuizCard";
 import QuizContainer from "./components/QuizContainer";
 import FinishQuiz from "./components/FinishQuiz";
 import MiniPianoHelper from "./components/MiniPianoHelper";
+import MusicFunFact from "./components/MusicFunFact";
 import { Answer, QuizQuestion } from "./types";
 
 // Static quiz content used to render each question and validate answers.
@@ -182,24 +183,28 @@ function App() {
         />
       ) : (
         <QuizContainer title="Music Theory Quiz">
-          <QuizCard
-            current={currentQuestionIndex + 1}
-            total={quizData.length}
-            question={currentQuestion.question}
-            answers={currentQuestion.answers}
-            onAnswerClick={(answer) =>
-              handleAnswerClick(currentQuestionIndex, answer)
-            }
-            feedback={feedbacks[currentQuestionIndex]}
-          />
+          <div className="quiz-main">
+            <MusicFunFact />
 
-          <MiniPianoHelper />
+            <QuizCard
+              current={currentQuestionIndex + 1}
+              total={quizData.length}
+              question={currentQuestion.question}
+              answers={currentQuestion.answers}
+              onAnswerClick={(answer) =>
+                handleAnswerClick(currentQuestionIndex, answer)
+              }
+              feedback={feedbacks[currentQuestionIndex]}
+            />
 
-          <NextQuestionButton
-            onClick={handleNextQuestion}
-            disabled={!currentAnswer}
-            text={isLastQuestion ? "Finish Quiz" : "Next Question"}
-          />
+            <MiniPianoHelper />
+
+            <NextQuestionButton
+              onClick={handleNextQuestion}
+              disabled={!currentAnswer}
+              text={isLastQuestion ? "Finish Quiz" : "Next Question"}
+            />
+          </div>
         </QuizContainer>
       )}
     </>
