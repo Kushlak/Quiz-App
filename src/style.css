@@ -74,6 +74,84 @@ body {
   margin: 8px 0;
 }
 
+.piano-helper {
+  margin: 12px 0;
+}
+
+.helper-toggle {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #777;
+  background: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.helper-toggle:hover {
+  background: #f7f7f7;
+}
+
+.piano-panel {
+  margin-top: 10px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: white;
+}
+
+.piano-keys {
+  display: grid;
+  grid-template-columns: repeat(13, minmax(0, 1fr));
+  gap: 4px;
+}
+
+.piano-key {
+  min-height: 56px;
+  padding: 8px 4px;
+  border: 1px solid #bbb;
+  background: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.sharp-key {
+  background: #222;
+  color: white;
+  border-color: #222;
+}
+
+.selected-key {
+  outline: 3px solid #2b7cff;
+  outline-offset: 2px;
+}
+
+.note-info {
+  margin-top: 12px;
+  padding: 10px;
+  border-left: 4px solid #2b7cff;
+  background: #f5f9ff;
+}
+
+.note-info p {
+  margin: 4px 0;
+}
+
+.helper-hide {
+  width: 100%;
+  margin-top: 12px;
+  padding: 10px;
+  border: 1px solid #444;
+  background: #222;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.helper-hide:hover {
+  background: #333;
+}
+
 /* Primary action button style used for finish/retry interactions. */
 .next-btn {
   padding: 10px;
@@ -91,4 +169,10 @@ body {
 
 .final-score {
   font-size: 18px;
+}
+
+@media (max-width: 520px) {
+  .piano-keys {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
 }
