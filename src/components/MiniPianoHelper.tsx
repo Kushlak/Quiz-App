@@ -45,6 +45,8 @@ const noteSounds: Record<string, string> = {
   "High C": c5Sound,
 };
 
+
+
 function getNoteExplanation(note: string) {
   if (note.includes("#")) {
     return `${note} is a sharp note. A sharp raises a note by one semitone.`;
@@ -99,7 +101,7 @@ function MiniPianoHelper() {
             })}
           </div>
 
-          {selectedNote && (
+          {!!selectedNote && (
             <div className="note-info" aria-live="polite">
               <p>Selected note: {selectedNote}</p>
               <p>{getNoteExplanation(selectedNote)}</p>

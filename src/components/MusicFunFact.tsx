@@ -18,7 +18,7 @@ function MusicFunFact() {
   return (
     <section className="note-of-day">
       <h2>Music Fun Fact:</h2>
-      {currentFact && <p>{currentFact}</p>}
+      {!!currentFact && <p>{currentFact}</p>}
       <button
         className="fact-button"
         type="button"
