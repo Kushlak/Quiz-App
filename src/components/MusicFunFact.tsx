@@ -7,7 +7,6 @@ function getRandomFact(facts: string[]) {
   return facts[randomIndex];
 }
 
-// Displays a music fun fact without changing quiz answers, score, or progress.
 function MusicFunFact() {
   const [currentFact, setCurrentFact] = useState("");
 

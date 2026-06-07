@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Answer, QuizQuestion } from "../types";
 import FinishQuiz from "./FinishQuiz";
 import QuizScreen from "../screens/QuizScreen";
-
 type Props = {
   title: string;
   questions: QuizQuestion[];

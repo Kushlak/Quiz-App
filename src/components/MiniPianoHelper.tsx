@@ -61,7 +61,6 @@ function playNote(note: string) {
   audio.play();
 }
 
-// Interactive helper for quickly checking notes while taking the quiz.
 function MiniPianoHelper() {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedNote, setSelectedNote] = useState<string | null>(null);

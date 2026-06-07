@@ -6,39 +6,34 @@ import {
   hasDuplicateAnswerTexts,
   isQuizQuestion,
 } from "../utils/quizValidation";
-/*
-App.tsx керує екранами і збереженим quiz.
-CreateQuizScreen керує формою створення quiz.
-*/
-export type CreateMode = "text" | "json";//two modes of creating
+export type CreateMode = "text" | "json";
 
-type CreatedQuiz = {//the form of the fully ready quiz
+type CreatedQuiz = {
   title: string;
   questions: QuizQuestion[];
   includesPianoHelper: boolean;
 };
 
-type Props = {//three callback function
+type Props = {
   onBack: () => void;
-  onSaveQuiz: (quiz: CreatedQuiz) => void;//function to save the quiz and give it to app.tsx
+  onSaveQuiz: (quiz: CreatedQuiz) => void;
   onStartQuiz: (quiz: CreatedQuiz) => void;
 };
 
 function CreateQuizScreen({ onBack, onSaveQuiz, onStartQuiz }: Props) {
-  //quiz is ready - start it
-  const [importMessage, setImportMessage] = useState(""); //big amount of useSrart, because it is form
-  //Question added.Fill in all answer fields.Imported 3 question(s).
-  const [draftQuizTitle, setDraftQuizTitle] = useState(""); //Quiz title
-  const [createMode, setCreateMode] = useState<CreateMode>("text"); //text або json, text - default
-  const [draftJsonQuiz, setDraftJsonQuiz] = useState("");//json that user pasted in textarea
-  const [showsJsonHelp, setShowsJsonHelp] = useState(false);//true - open, false - closed
-  const [draftQuestion, setDraftQuestion] = useState("");//saves the question that user wroted
-  const [draftAnswers, setDraftAnswers] = useState(["", "", "", ""]);//four places for the answers, firstly the are empty
-  const [correctAnswerIndex, setCorrectAnswerIndex] = useState(0);//saves indexof the right answer
-  const [createdQuestions, setCreatedQuestions] = useState<QuizQuestion[]>([]);//array of questions that user already added
-  const [draftIncludesPianoHelper, setDraftIncludesPianoHelper] = useState(true);// checked - you have piano, not checked - you daont have
+  const [importMessage, setImportMessage] = useState("");
+  const [draftQuizTitle, setDraftQuizTitle] = useState("");
+  const [createMode, setCreateMode] = useState<CreateMode>("text");
+  const [draftJsonQuiz, setDraftJsonQuiz] = useState("");
+  const [showsJsonHelp, setShowsJsonHelp] = useState(false);
+  const [draftQuestion, setDraftQuestion] = useState("");
+  const [draftAnswers, setDraftAnswers] = useState(["", "", "", ""]);
+  const [correctAnswerIndex, setCorrectAnswerIndex] = useState(0);
+  const [createdQuestions, setCreatedQuestions] = useState<QuizQuestion[]>([]);
+  const [draftIncludesPianoHelper, setDraftIncludesPianoHelper] =
+    useState(true);
 
-  function getQuizTitle(fallback: string) {// my quiz
+  function getQuizTitle(fallback: string) {
     return draftQuizTitle.trim() || fallback;
   }
 
@@ -230,7 +225,7 @@ function CreateQuizScreen({ onBack, onSaveQuiz, onStartQuiz }: Props) {
                 id="draft-json-quiz"
                 value={draftJsonQuiz}
                 onChange={(event) => setDraftJsonQuiz(event.target.value)}
-                placeholder={`[
+                placeholder={`[ 
   {
     "question": "How many beats are in 4/4?",
     "answers": ["2", "3", "4", "6"],
