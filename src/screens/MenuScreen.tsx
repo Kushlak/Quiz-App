@@ -1,7 +1,6 @@
 import MusicFunFact from "../components/MusicFunFact";
 import QuizCard from "../components/QuizCard";
 import QuizContainer from "../components/QuizContainer";
-
 type Props = {
   savedQuizTitle: string;
   hasSavedQuestions: boolean;

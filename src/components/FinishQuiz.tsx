@@ -8,7 +8,6 @@ type Props = {
   onMenu: () => void;
 };
 
-// Final screen displays score summary and exposes retry action.
 const FinishQuiz = ({ score, totalQuestions, onRetry, onMenu }: Props) => {
   return (
     <QuizContainer title="Music Theory Quiz">

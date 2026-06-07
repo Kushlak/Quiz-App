@@ -3,7 +3,6 @@ import NextQuestionButton from "../components/NextQuestionButton";
 import QuizCard from "../components/QuizCard";
 import QuizContainer from "../components/QuizContainer";
 import { Answer, QuizQuestion } from "../types";
-
 type Props = {
   title: string;
   currentQuestion: QuizQuestion;
